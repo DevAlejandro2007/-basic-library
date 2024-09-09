@@ -239,11 +239,25 @@ class Libro:
             elif opcion == 6:
                 self.devolver_titulos()
             elif opcion == 7:
-                break    
+                global salir
+                salir = False
 
 #EJECUCION DEL PROGRAMA
 def ejecutar ():
     biblioteca = Libro()
     biblioteca.menu_libro()
 
-ejecutar()
+
+
+logging.basicConfig(filename= "BLIBLIOTECA.LOGS",
+                    level=logging.INFO,
+                    format='%(asctime)s-%(levelname)s-%(message)s')
+
+
+salir = True
+while salir == True:
+    try :
+        ejecutar()
+    except ValueError as error:
+        logging.error("ERROR EN EL MENU, NO SE ACEPTAN LETRAS")
+        print(error)
