@@ -1,4 +1,4 @@
-# Python Study Projects 🐍
+# Python Study Projects 🐍📚
 This repository contains personal projects and exercises carried out to study and improve my Python skills. Each folder includes different topics, projects, or scripts that cover key aspects of the language and associated libraries.
 
 The goal of this repository is to centralize the projects and challenges I've completed while learning Python. Some of the topics covered include:
