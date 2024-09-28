@@ -1,3 +1,5 @@
+import logging, random
+
 print("""
 --  ######    ######  ######    ####     ######   #####   ######## #######   #####      ##
 --   ##  ##     ##     ##  ##    ##        ##    ##   ##  #  ##  #  ##  ##  ##   ##    ####
@@ -38,7 +40,6 @@ class Libro:
 
 # se crea un tiempo ramdom para luego compararlo con el plazo maximo de devolucion de libro
     def tiempo_de_prestamos (self):
-        import random 
         plazo = self.tiempo_prestamo + 5
         print(self.tiempo_prestamo)  
         self.tiempo_max = random.randint(1, plazo)
@@ -50,10 +51,10 @@ class Libro:
         print("-----------------------------------------------------")
         print(titulos_prestamo)
         if len(titulos_prestamo) == 0:
-            print("NO HAY TITULOS EN PRESTAMO ")
+            print("**NO HAY TITULOS EN PRESTAMO**")
             self.menu_libro()
         else:
-            user_devol = input("CUAL ES EL USUARIO QUE VA A DEVOLVER EL LIBR0? \n").upper()
+            user_devol = input("**CUAL ES EL USUARIO QUE VA A DEVOLVER EL LIBR0? \n").upper()
             if user_devol in self.users_obj.nombre:
                 print("-----------------------------------------------------")
                 print("TITULOS QUE TIENES: ", titulos_prestamo[user_devol])
@@ -101,7 +102,7 @@ class Libro:
                 print("ESTE USUARIO NO SE ENCUNETRA EN LA BASE DE DATOS, AÑADELO EN EL MENU PRINCIPAL")
                 self.menu_libro()
 
-    
+
         #REGISTRAT USUARIOS 
 
 # AGREGAR UN USUARIO 
@@ -179,8 +180,8 @@ class Libro:
         print("AUTORES", self.autor)
         print("GENEROS", self.genero)
         if len(self.titulos) == 0 and len(self.autor) == 0  and len(self.genero) == 0 :
-                print("LA LISTA DE TITULOS, AUTORES Y GENEROS ESTA VACIA, AÑADE UN LIBRO Y PODRAS CONTINUAR")
-                self.menu_libro()
+            print("LA LISTA DE TITULOS, AUTORES Y GENEROS ESTA VACIA, AÑADE UN LIBRO Y PODRAS CONTINUAR")
+            self.menu_libro()
         print("-----------------------------------------------------")
         print()
         usuarios_prestar = input("A QUE USUARIO LE VAS A PRESTAR EL LIBRO? \n").upper()
@@ -259,5 +260,6 @@ while salir == True:
     try :
         ejecutar()
     except ValueError as error:
-        logging.error("ERROR EN EL MENU, NO SE ACEPTAN LETRAS")
-        print(error)
+        logging.error("EN EL MENU, NO SE ACEPTAN LETRAS")
+        logging.warning(" EL ERROR FUE ENCAPSULADO")
+        print("OPCION INVALIDA, POR FAVOR INGRESE UNA OPCION DEL 1 AL 7")
